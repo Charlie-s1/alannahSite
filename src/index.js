@@ -3,6 +3,9 @@ import {createRoot} from 'react-dom/client';
 import { TypeAnimation } from 'react-type-animation';
 import "./index.css";
 
+import instaLogo from "./img/instagram.png";
+import vimeoLogo from "./img/vimeo.png";
+import youtubeLogo from "./img/youtube.png";
 
 import mainFace from "./img/main.png";
 import eye from "./img/lEye.png";
@@ -113,11 +116,31 @@ class Face extends React.Component{
           </div>
           
         </div>
-        <div className="link" 
-          onMouseEnter={(e)=>{this.state.hover=true}}
-          onMouseLeave={(e)=>{this.state.hover=false}}
-        >
-          <h1>PAST WORK</h1>
+        
+        <div className="link" id="socialLinks">
+          <div>
+            <img
+              src={instaLogo}
+              onMouseEnter={(e)=>{this.state.hover=true}}
+              onMouseLeave={(e)=>{this.state.hover=false}}
+            />
+          </div>
+          <div>
+          <img
+            src={vimeoLogo}
+            onMouseEnter={(e)=>{this.state.hover=true}}
+            onMouseLeave={(e)=>{this.state.hover=false}}
+          />
+          </div>
+          <div>
+          <img
+            src={youtubeLogo}
+            onMouseEnter={(e)=>{this.state.hover=true}}
+            onMouseLeave={(e)=>{this.state.hover=false}}
+          />
+          </div>
+          
+
         </div>
         
       </div>
@@ -194,16 +217,21 @@ class Main extends React.Component{
           faceRef = {this.faceRef}
           hovering = {this.state.hovering}
         />
-        <TypeAnimation
-          sequence={[
-            1000,
-            "Hi, my name is Alannah. Have a look around!",
-          ]}
-          wrapper="div"
-          className="speech"
-          cursor={false}
-          speed={50}
-        />
+        <div id="speechCont">
+          <TypeAnimation
+            sequence={[
+              1000,
+              "Hi, my name is Alannah. Have a look around!",
+            ]}
+            wrapper="div"
+            className="speech"
+            cursor={false}
+            speed={50}
+          />
+          <div id="speechPointBorder"></div>
+          <div id="speechPoint"></div>
+        </div>
+        
       </div>
     )
   }
