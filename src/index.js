@@ -6,6 +6,7 @@ import "./index.css";
 import instaLogo from "./img/instagram.png";
 import vimeoLogo from "./img/vimeo.png";
 import youtubeLogo from "./img/youtube.png";
+import emailLogo from "./img/email.png";
 
 import mainFace from "./img/main.png";
 import eye from "./img/lEye.png";
@@ -119,28 +120,44 @@ class Face extends React.Component{
         
         <div className="link" id="socialLinks">
           <div>
+            <a href="https://instagram.com/a.m.jane.smith">
+              <img
+                id="InstagramLogo"
+                src={instaLogo}
+                onMouseEnter={(e)=>{this.state.hover=true}}
+                onMouseLeave={(e)=>{this.state.hover=false}}
+              />
+            </a>
+          </div>
+          <div>
+            <a href="https://vimeo.com/user84846026">
             <img
-              src={instaLogo}
+              id="vimeoLogo"
+              src={vimeoLogo}
               onMouseEnter={(e)=>{this.state.hover=true}}
               onMouseLeave={(e)=>{this.state.hover=false}}
             />
+            </a>
+          </div>
+          <div id="youtubeLogo">
+            <a href="https://www.youtube.com/@alannahsmith1294">
+              <img
+                src={youtubeLogo}
+                onMouseEnter={(e)=>{this.state.hover=true}}
+                onMouseLeave={(e)=>{this.state.hover=false}}
+              />
+            </a>
           </div>
           <div>
-          <img
-            src={vimeoLogo}
-            onMouseEnter={(e)=>{this.state.hover=true}}
-            onMouseLeave={(e)=>{this.state.hover=false}}
-          />
+            <a href="mailto:alannah.smith@ntlworld.com">
+              <img
+                id="emailLogo"
+                src={emailLogo}
+                onMouseEnter={(e)=>{this.state.hover=true}}
+                onMouseLeave={(e)=>{this.state.hover=false}}
+              />
+            </a>
           </div>
-          <div>
-          <img
-            src={youtubeLogo}
-            onMouseEnter={(e)=>{this.state.hover=true}}
-            onMouseLeave={(e)=>{this.state.hover=false}}
-          />
-          </div>
-          
-
         </div>
         
       </div>
@@ -217,24 +234,39 @@ class Main extends React.Component{
           faceRef = {this.faceRef}
           hovering = {this.state.hovering}
         />
-        <div id="speechCont">
-          <TypeAnimation
-            sequence={[
-              1000,
-              "Hi, my name is Alannah. Have a look around!",
-            ]}
-            wrapper="div"
-            className="speech"
-            cursor={false}
-            speed={50}
-          />
-          <div id="speechPointBorder"></div>
-          <div id="speechPoint"></div>
-        </div>
+        <Talk/>
         
       </div>
     )
   }
+}
+
+class Talk extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      talking:false,
+    }
+  }
+  render(){
+    return(
+      <div id="speechCont">
+        <TypeAnimation
+          sequence={[
+            1000,
+            "Hi, my name is Alannah. Have a look around!",
+          ]}
+          wrapper="div"
+          className="speech"
+          cursor={false}
+          speed={50}
+        />
+        <div id="speechPointBorder"></div>
+        <div id="speechPoint"></div>
+      </div>
+    )
+  }
+    
 }
 
 const container = document.querySelector("#root");
