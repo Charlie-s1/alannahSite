@@ -12,6 +12,15 @@ html,body,#root,#main{
     height:100%;
     color:#000;
 }
+#loadingScreen{
+    position:absolute;
+    z-index: 100;
+    width:100%;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
 #main{
     max-height: 100vh;
     display:flex;
@@ -180,6 +189,7 @@ img{
     margin-top:1rem;
     color:black;
     cursor: pointer;
+    user-select: none;
 }
 .speech{
     text-align: center;

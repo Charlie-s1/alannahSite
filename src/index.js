@@ -51,16 +51,22 @@ class Face extends React.Component{
       hover:false,
       lEyeHover:false,
       rEyeHover:false,
+      imgLoaded:[],
     }
 
     this.images = mountImages();
-    console.log(this.images);
   }
- 
+  checkLoad(e){
+    const toLoad=["instagramLogo","youtubeLogo","emailLogo","vimeoLogo","mainFace"]
+    this.state.imgLoaded.push(e.target.id);
+    if(JSON.stringify(this.state.imgLoaded.sort())==JSON.stringify(toLoad.sort())){
+      this.props.onLoad();
+    }
+  }
   render(){
     return(
       <div id="FaceCont"
-        onLoad={(e)=>this.props.onLoad(e)}
+        style={this.props.loaded ? {display:"flex"} : {display:"none"}}
       >
         <div className="link" 
           onMouseEnter={(e)=>{this.state.hover=true}}
@@ -69,7 +75,7 @@ class Face extends React.Component{
           <h1>PORTFOLIO</h1>
         </div>
         <div id="face" ref={this.faceRef}>
-          <img draggable={false} id="mainFace" src={mainFace}/>
+          <img draggable={false} id="mainFace" onLoad={(e)=>this.checkLoad(e)} src={mainFace}/>
           <div id="faceParts">
             <div id="lEyeCont" ref={this.lEyeRef}>
               <div id="lEye"
@@ -107,7 +113,7 @@ class Face extends React.Component{
               </div>
             </div>
             <div id="mouthCont">
-              <img draggable={false} id="mouth" src={this.props.hovering ? (this.state.hover ? smile :this.props.talking ? talk : closeSmile) : this.props.talking ? talk : smile}></img>
+              <img draggable={false} id="mouth" src={this.props.hovering ? (this.state.hover ? smile : (this.props.talking && this.props.loaded) ? talk : closeSmile) : (this.props.talking && this.props.loaded) ? talk : smile}></img>
             </div>
             
             
@@ -122,7 +128,8 @@ class Face extends React.Component{
           <div>
             <a href="https://instagram.com/a.m.jane.smith">
               <img
-                id="InstagramLogo"
+                id="instagramLogo"
+                onLoad={(e)=>this.checkLoad(e)}
                 src={instaLogo}
                 onMouseEnter={(e)=>{this.state.hover=true}}
                 onMouseLeave={(e)=>{this.state.hover=false}}
@@ -133,6 +140,7 @@ class Face extends React.Component{
             <a href="https://vimeo.com/user84846026">
             <img
               id="vimeoLogo"
+              onLoad={(e)=>this.checkLoad(e)}
               src={vimeoLogo}
               onMouseEnter={(e)=>{this.state.hover=true}}
               onMouseLeave={(e)=>{this.state.hover=false}}
@@ -142,6 +150,8 @@ class Face extends React.Component{
           <div id="youtubeLogo">
             <a href="https://www.youtube.com/@alannahsmith1294">
               <img
+                id="youtubeLogo"
+                onLoad={(e)=>this.checkLoad(e)}
                 src={youtubeLogo}
                 onMouseEnter={(e)=>{this.state.hover=true}}
                 onMouseLeave={(e)=>{this.state.hover=false}}
@@ -152,6 +162,7 @@ class Face extends React.Component{
             <a href="mailto:alannah.smith@ntlworld.com">
               <img
                 id="emailLogo"
+                onLoad={(e)=>this.checkLoad(e)}
                 src={emailLogo}
                 onMouseEnter={(e)=>{this.state.hover=true}}
                 onMouseLeave={(e)=>{this.state.hover=false}}
@@ -170,7 +181,7 @@ class Main extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      talking:false,
+      talking:true,
       showing:"",
       lRot:0,
       rRot:0,
@@ -182,7 +193,6 @@ class Main extends React.Component{
     this.lEyeRef = React.createRef();
     this.rEyeRef = React.createRef();
     this.faceRef = React.createRef();
-    this.talking();
   }
   /**
    * move eye pupil 
@@ -206,9 +216,6 @@ class Main extends React.Component{
    */
   talking(){
     setTimeout(()=>{
-      this.setState({talking:true})
-    },1000);
-    setTimeout(()=>{
       this.setState({talking:false})
     },3500);
   }
@@ -220,10 +227,15 @@ class Main extends React.Component{
         onMouseMove={(e)=>this.mouseMoving(e)}
         onMouseLeave={(e)=>{this.setState({hovering:false,pupilPosX:50,pupilPosY:50})}}
         onMouseEnter={(e)=>{this.setState({hovering:true,pupilPosX:50,pupilPosY:25})}}
-        style={this.state.loaded ? {display:"flex"} : {display:"none"}}
+        
       >
+         
         <Face
-          onLoad={(e)=>this.setState({loaded:true})}
+          onLoad={(e)=>{
+            this.setState({loaded:true})
+            this.talking();
+          }}
+          loaded={this.state.loaded}
           talking={this.state.talking}
           lRot={this.state.lRot}
           rRot={this.state.rRot}
@@ -234,7 +246,10 @@ class Main extends React.Component{
           faceRef = {this.faceRef}
           hovering = {this.state.hovering}
         />
-        <Talk/>
+        {!this.state.loaded ? <Loading/> : null}
+        <Talk
+          loaded={this.state.loaded}
+        />
         
       </div>
     )
@@ -244,29 +259,52 @@ class Main extends React.Component{
 class Talk extends React.Component{
   constructor(props){
     super(props)
-    this.state={
-      talking:false,
-    }
   }
   render(){
     return(
-      <div id="speechCont">
+      <div id="speechCont"
+        style={this.props.loaded ? {display:"flex"} : {display:"none"}}
+      >
+        {this.props.loaded ?
         <TypeAnimation
           sequence={[
-            1000,
             "Hi, my name is Alannah. Have a look around!",
           ]}
           wrapper="div"
           className="speech"
           cursor={false}
-          speed={50}
-        />
+          speed={35}
+        /> : null}
         <div id="speechPointBorder"></div>
         <div id="speechPoint"></div>
       </div>
     )
   }
     
+}
+
+function Loading(props){
+  return(
+    <div id="loadingScreen">
+      <TypeAnimation
+        sequence={[
+          "",100,
+          "Loading",
+          1000,
+          "Loading.",
+          250,
+          "Loading..",
+          250,
+          "Loading...",
+          250
+        ]}
+        repeat={Infinity}
+        // cursor={false}
+        speed={5}
+        deletionSpeed={1}
+      />
+    </div>
+  )
 }
 
 const container = document.querySelector("#root");
