@@ -126,7 +126,7 @@ class Face extends React.Component{
         
         <div className="link" id="socialLinks">
           <div>
-            <a href="https://instagram.com/a.m.jane.smith">
+            <a href="https://instagram.com/alannahmaryjanesmith">
               <img
                 id="instagramLogo"
                 onLoad={(e)=>this.checkLoad(e)}
@@ -148,7 +148,7 @@ class Face extends React.Component{
             </a>
           </div>
           <div id="youtubeLogo">
-            <a href="https://www.youtube.com/@alannahsmith1294">
+            <a href="https://www.youtube.com/channel/UCCOkMyAfR6vMEBYuwD0gDmA">
               <img
                 id="youtubeLogo"
                 onLoad={(e)=>this.checkLoad(e)}
@@ -159,7 +159,7 @@ class Face extends React.Component{
             </a>
           </div>
           <div>
-            <a href="mailto:alannah.smith@ntlworld.com">
+            <a href="mailto:me@alannahmaryjane.com">
               <img
                 id="emailLogo"
                 onLoad={(e)=>this.checkLoad(e)}
