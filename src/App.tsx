@@ -29,7 +29,7 @@ function App() {
         <p>Imagine a talking, breathing, ancestry tree!</p>
       </div>
 
-      <div className="flex">
+      <div className="flex pt-10">
         <div
           style={{ writingMode: "vertical-rl", textOrientation: "upright", letterSpacing: "1rem" }}
           className="text-xl font-bold px-10 shrink-0"
