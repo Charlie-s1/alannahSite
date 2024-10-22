@@ -1,23 +1,22 @@
-import React, { useRef, useState } from "react";
-import { createRoot } from "react-dom/client";
+import { useRef, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import "./home.css";
 
-import instaLogo from "./img/instagram.png";
-import vimeoLogo from "./img/vimeo.png";
-import youtubeLogo from "./img/youtube.png";
-import emailLogo from "./img/email.png";
+import instaLogo from "../assets/img/instagram.png";
+import vimeoLogo from "../assets/img/vimeo.png";
+import youtubeLogo from "../assets/img/youtube.png";
+import emailLogo from "../assets/img/email.png";
 
-import mainFace from "./img/main.png";
-import eye from "./img/lEye.png";
-import closeEye from "./img/eyeBlink.png";
-import pupil from "./img/pupil.png";
-import smile from "./img/smile.png";
-import eyeBack from "./img/eyeBackground.png";
-// import smSmile from "./img/smSmile.png";
-import talk from "./img/talk.gif";
-import relaxEye from "./img/relaxEye.png";
-import closeSmile from "./img/closeSmile.png";
+import mainFace from "../assets/img/main.png";
+import eye from "../assets/img/lEye.png";
+import closeEye from "../assets/img/eyeBlink.png";
+import pupil from "../assets/img/pupil.png";
+import smile from "../assets/img/smile.png";
+import eyeBack from "../assets/img/eyeBackground.png";
+// import smSmile from "../assets/img/smSmile.png";
+import talk from "../assets/img/talk.gif";
+import relaxEye from "../assets/img/relaxEye.png";
+import closeSmile from "../assets/img/closeSmile.png";
 
 let images = [mainFace, eye, closeEye, pupil, smile, eyeBack, talk, relaxEye, closeSmile];
 
