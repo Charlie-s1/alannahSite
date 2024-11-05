@@ -1,34 +1,35 @@
 {
-  "name": "alannahsite",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "alannahsite2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack serve --open",
-    "build": "webpack",
-    "deploy": "gh-pages -d build"
+    "dev": "vite --open --host",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@svgr/webpack": "^6.5.1",
-    "css-loader": "^6.7.2",
-    "file-loader": "^6.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-type-animation": "^2.1.2",
-    "style-loader": "^3.3.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-player": "^2.16.0",
+    "react-router-dom": "^6.27.0",
+    "react-type-animation": "^3.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.2",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6",
-    "babel-loader": "^9.1.0",
-    "gh-pages": "^4.0.0",
-    "html-webpack-plugin": "^5.5.0",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.0",
-    "webpack-dev-server": "^4.11.1"
+    "@eslint/js": "^9.11.1",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.11.1",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.12",
+    "globals": "^15.9.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.7.0",
+    "vite": "^5.4.8"
   }
 }
