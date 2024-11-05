@@ -40,6 +40,11 @@ function App() {
           {[
             {
               year: "2024",
+              title: "Marilyn and David 50th Anniversery",
+              link: "https://vimeo.com/1024947728",
+            },
+            {
+              year: "",
               title: "Dorothy and Adam’s First Anniversary",
               link: "https://player.vimeo.com/video/1007987708",
             },
