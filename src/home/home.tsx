@@ -17,18 +17,19 @@ import eyeBack from "../assets/img/eyeBackground.png";
 import talk from "../assets/img/talk.gif";
 import relaxEye from "../assets/img/relaxEye.png";
 import closeSmile from "../assets/img/closeSmile.png";
+import { Link } from "react-router-dom";
 
-let images = [mainFace, eye, closeEye, pupil, smile, eyeBack, talk, relaxEye, closeSmile];
+// let images = [mainFace, eye, closeEye, pupil, smile, eyeBack, talk, relaxEye, closeSmile];
 
-function mountImages() {
-  const toRet = images.map((i) => {
-    const img = new Image();
-    img.src = i;
-    img.draggable = false;
-    return img;
-  });
-  return toRet;
-}
+// function mountImages() {
+//   const toRet = images.map((i) => {
+//     const img = new Image();
+//     img.src = i;
+//     img.draggable = false;
+//     return img;
+//   });
+//   return toRet;
+// }
 
 const Face = (props: {
   onLoad: () => void;
@@ -54,20 +55,19 @@ const Face = (props: {
 
   return (
     <div id="FaceCont" style={isLoaded ? { display: "flex" } : { display: "none" }}>
-      <div
-        className="link"
-        onMouseEnter={(e) => {
-          setIsHover(true);
-        }}
-        onMouseLeave={(e) => {
-          setIsHover(false);
-        }}
-        onClick={() => {
-          window.location.replace("/memoryLane");
-        }}
-      >
-        <h1>MEMORY LINE</h1>
-      </div>
+      <Link to="/memoryLane">
+        <div
+          className="link"
+          onMouseEnter={() => {
+            setIsHover(true);
+          }}
+          onMouseLeave={() => {
+            setIsHover(false);
+          }}
+        >
+          <h1>MEMORY LINE</h1>
+        </div>
+      </Link>
       <div id="face" ref={props.faceRef}>
         <img draggable={false} id="mainFace" src={mainFace} />
         <div id="faceParts">
@@ -175,10 +175,10 @@ const Face = (props: {
             <img
               id="instagramLogo"
               src={instaLogo}
-              onMouseEnter={(e) => {
+              onMouseEnter={() => {
                 setIsHover(true);
               }}
-              onMouseLeave={(e) => {
+              onMouseLeave={() => {
                 setIsHover(false);
               }}
             />
@@ -189,10 +189,10 @@ const Face = (props: {
             <img
               id="vimeoLogo"
               src={vimeoLogo}
-              onMouseEnter={(e) => {
+              onMouseEnter={() => {
                 setIsHover(true);
               }}
-              onMouseLeave={(e) => {
+              onMouseLeave={() => {
                 setIsHover(false);
               }}
             />
@@ -203,10 +203,10 @@ const Face = (props: {
             <img
               id="youtubeLogo"
               src={youtubeLogo}
-              onMouseEnter={(e) => {
+              onMouseEnter={() => {
                 setIsHover(true);
               }}
-              onMouseLeave={(e) => {
+              onMouseLeave={() => {
                 setIsHover(false);
               }}
             />
@@ -217,10 +217,10 @@ const Face = (props: {
             <img
               id="emailLogo"
               src={emailLogo}
-              onMouseEnter={(e) => {
+              onMouseEnter={() => {
                 setIsHover(true);
               }}
-              onMouseLeave={(e) => {
+              onMouseLeave={() => {
                 setIsHover(false);
               }}
             />
@@ -278,12 +278,12 @@ const Main = () => {
     <div
       id="main"
       onMouseMove={mouseMoving}
-      onMouseLeave={(e) => {
+      onMouseLeave={() => {
         setIsHovering(false);
         setPupilPosX(50);
         setPupilPosY(50);
       }}
-      onMouseEnter={(e) => {
+      onMouseEnter={() => {
         setIsHovering(true);
         setPupilPosX(50);
         setPupilPosY(25);
