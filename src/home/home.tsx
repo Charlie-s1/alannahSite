@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import "./home.css";
 
@@ -31,7 +31,7 @@ function mountImages() {
 }
 
 const Face = (props: {
-  onLoad: (e: any) => void;
+  onLoad: () => void;
   loaded: boolean;
   talking: boolean;
   lRot: number;
@@ -44,12 +44,13 @@ const Face = (props: {
   hovering: boolean;
 }) => {
   const [isHover, setIsHover] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const faceRef = useRef(null);
-  const lEyeRef = useRef(null);
+  const [isLoaded] = useState(true);
   const [lEyeHover, setLEyeHover] = useState(false);
-  const rEyeRef = useRef(null);
   const [rEyeHover, setREyeHover] = useState(false);
+
+  useEffect(() => {
+    props.onLoad();
+  }, []);
 
   return (
     <div id="FaceCont" style={isLoaded ? { display: "flex" } : { display: "none" }}>
@@ -61,13 +62,16 @@ const Face = (props: {
         onMouseLeave={(e) => {
           setIsHover(false);
         }}
+        onClick={() => {
+          window.location.replace("/memoryLane");
+        }}
       >
-        <h1>PORTFOLIO</h1>
+        <h1>MEMORY LINE</h1>
       </div>
-      <div id="face" ref={faceRef}>
+      <div id="face" ref={props.faceRef}>
         <img draggable={false} id="mainFace" src={mainFace} />
         <div id="faceParts">
-          <div id="lEyeCont" ref={lEyeRef}>
+          <div id="lEyeCont" ref={props.lEyeRef}>
             <div
               id="lEye"
               onMouseEnter={() => {
@@ -97,14 +101,14 @@ const Face = (props: {
                   props.hovering
                     ? lEyeHover
                       ? { height: "150%" }
-                      : null
+                      : {}
                     : { left: "-15%", maxWidth: "105%" }
                 }
                 src={props.hovering ? (lEyeHover ? closeEye : eye) : relaxEye}
               />
             </div>
           </div>
-          <div id="rEyeCont" ref={rEyeRef}>
+          <div id="rEyeCont" ref={props.rEyeRef}>
             <div
               id="rEye"
               onMouseEnter={() => {
@@ -134,7 +138,7 @@ const Face = (props: {
                   props.hovering
                     ? rEyeHover
                       ? { height: "150%" }
-                      : null
+                      : {}
                     : { left: "10%", maxWidth: "105%" }
                 }
                 src={props.hovering ? (rEyeHover ? closeEye : eye) : relaxEye}
@@ -286,7 +290,7 @@ const Main = () => {
       }}
     >
       <Face
-        onLoad={(e) => {
+        onLoad={() => {
           setIsLoaded(true);
           talking;
           talking();
