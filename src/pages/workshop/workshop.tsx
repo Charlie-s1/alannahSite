@@ -9,7 +9,6 @@ import {
   rydeImg5,
   rydeImg6,
   rydeImg7,
-  rydeImg8,
   rydeImg9,
 } from "../../assets/img/workshops/theRyde/theRyde";
 import {
@@ -33,7 +32,7 @@ import {
 } from "../../assets/img/workshops/workshopImages";
 
 const Workshops = () => {
-  const [imgToShow, setImgToShow] = useState(null);
+  const [imgToShow, setImgToShow] = useState<string | null>(null);
   return (
     <div className="flex flex-col h-screen max-w-[1000px] w-full m-auto gap-8 font-mono">
       {imgToShow && (
