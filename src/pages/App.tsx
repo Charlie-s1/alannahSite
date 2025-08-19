@@ -53,12 +53,12 @@ function App() {
             {
               year: "2023",
               title: "What Will We Be?",
-              link: "https://vimeo.com/840061845",
+              link: "https://youtu.be/8m7alkzTpnw",
             },
             {
               year: "2022",
               title: "A Badgers Christmas",
-              link: "https://vimeo.com/780842477",
+              link: "https://youtu.be/tN1cjLMC1F8",
             },
             {
               year: "2020",

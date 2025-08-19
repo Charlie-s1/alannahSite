@@ -89,7 +89,7 @@ const Workshops = () => {
             rydeImg6,
             rydeImg7,
             rydeImg9,
-            rydeImg11,
+            // rydeImg11,
           ].map((n) => (
             <div
               onClick={() => setImgToShow(n)}
