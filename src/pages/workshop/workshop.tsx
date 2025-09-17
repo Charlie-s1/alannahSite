@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   rydeImg1,
   rydeImg10,
-  rydeImg11,
   rydeImg2,
   rydeImg3,
   rydeImg4,

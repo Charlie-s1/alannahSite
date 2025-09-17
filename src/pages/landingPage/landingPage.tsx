@@ -1,16 +1,14 @@
 import memeoryLine from "../../assets/memoryLine.png";
 import workshopsTitle from "../../assets/workshopTitle.png";
 import face from "../../assets/FRONTimage.png";
-import { email, instagram, vimeo, youtube } from "../../assets/icons/icons";
+import { email, instagram, youtube } from "../../assets/icons/icons";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
-    <div className="w-full h-screen flex flex-col  items-center justify-between">
-      <h1 className="font-mono text-4xl -mb-24 text-red-700 p-10 pt-20 pb-0 text-center">
-        Alannah Mary Jane Smith
-      </h1>
-      <div className="flex flex-col md:flex-row w-[40%] sm:w-[30%] md:w-full h-full gap-5 items-center justify-center">
+    <div className="w-full h-screen flex flex-col  items-center justify-between pt-10">
+      <h1 className="font-mono text-4xl text-red-700  text-center">Alannah Mary Jane Smith</h1>
+      <div className="flex flex-col md:flex-row w-[40%] sm:w-[30%] md:w-full gap-5 items-center justify-center">
         {/* <div className="w-full flex flex-shrink justify-center"> */}
         <div className="w-full md:hidden flex justify-center relative">
           <img src={face} />
@@ -29,12 +27,12 @@ const LandingPage = () => {
         </Link>
         {/* </div> */}
       </div>
-      <div className="absolute flex gap-5 bottom-14 h-10">
+      <div className="flex gap-5 ">
         {[
           { link: "https://www.youtube.com/channel/UCCOkMyAfR6vMEBYuwD0gDmA", img: youtube },
           { link: "https://www.instagram.com/alannahmaryjane", img: instagram },
           // { link: "https://vimeo.com/user84846026", img: vimeo },
-          { link: "mailto:me@alannahmaryjane.com", img: email },
+          { link: "mailto:alannah.smith@ntlworld.com", img: email },
         ].map((n, i) => (
           <Link key={i} className="w-20 h-20" to={n.link}>
             <img src={n.img} />
